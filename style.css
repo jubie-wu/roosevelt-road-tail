@@ -1005,6 +1005,16 @@ body::after {
   text-align: justify;
 }
 .modal-text p:last-child { margin-bottom: 0; }
+.read-more-hint {
+  font-style: italic;
+  color: var(--terracotta) !important;
+  text-align: center !important;
+  margin-top: 1.5em !important;
+  padding-top: 1.5em;
+  border-top: 1px dashed var(--blush);
+  font-size: 0.88rem !important;
+  letter-spacing: 0.05em;
+}
 
 /* Scrollbar for modal */
 .modal::-webkit-scrollbar { width: 6px; }
