@@ -736,36 +736,52 @@ body::after {
 }
 .sub-form {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+  margin: 0 auto 16px;
 }
 .sub-form input {
-  flex: 1;
-  padding: 12px 16px;
-  border: 1.5px solid var(--blush);
-  border-radius: var(--r-sm);
+  width: 100%;
+  padding: 14px 20px;
+  border: 1.5px solid var(--parchment);
+  border-radius: 30px;
   background: var(--cream);
-  font-family: var(--ff-sans);
-  font-size: 0.88rem;
+  font-family: var(--ff-serif);
+  font-size: 0.92rem;
   color: var(--ink);
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  text-align: center;
+  letter-spacing: 0.03em;
 }
-.sub-form input:focus { border-color: var(--terracotta); }
-.sub-form input::placeholder { color: var(--blush); }
+.sub-form input:focus {
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 3px rgba(192, 117, 83, 0.1);
+}
+.sub-form input::placeholder {
+  color: var(--blush);
+  font-family: var(--ff-serif);
+}
 .sub-form button {
-  padding: 12px 24px;
+  padding: 14px 32px;
   background: var(--terracotta);
-  color: white;
+  color: var(--warm-white);
   border: none;
-  border-radius: var(--r-sm);
-  font-family: var(--ff-sans);
-  font-size: 0.88rem;
-  font-weight: 500;
+  border-radius: 30px;
+  font-family: var(--ff-serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
 }
-.sub-form button:hover { background: var(--rust); transform: translateY(-1px); }
+.sub-form button:hover {
+  background: var(--rust);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(155, 91, 58, 0.2);
+}
 .sub-note {
   font-size: 0.72rem;
   color: #bbb;
