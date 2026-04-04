@@ -449,7 +449,10 @@
       <div class="sub-box">
         <h2>不想錯過這本書的消息？</h2>
         <p>留下你的 email，書有新進度我第一個告訴你。<br>（就像那年在樓梯間等天亮，這次換你等書出生。）</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_-6T-QP1tBKv67gADqWmS5zEiD91xpNQgSGusV1YZVz5SDw/viewform?usp=publish-editor" target="_blank" rel="noopener" class="sub-btn">我要等這本書</a>
+        <form class="sub-form" onsubmit="handleSubscribe(event)">
+          <input type="email" placeholder="你的 email" required>
+          <button type="submit">我要等這本書</button>
+        </form>
         <p class="sub-note">放心，不會像萬隆的熱炒店一樣吵，只在重要時刻才寄信。</p>
       </div>
     </div>

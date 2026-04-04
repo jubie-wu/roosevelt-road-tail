@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ===== 訂閱 =====
+// ===== 訂閱（送到 Google Forms）=====
 function handleSubscribe(e) {
   e.preventDefault();
   const form = e.target;
@@ -164,16 +164,24 @@ function handleSubscribe(e) {
   const btn = form.querySelector('button');
   const email = input.value;
 
+  // 送到 Google Forms
+  const gformUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf_-6T-QP1tBKv67gADqWmS5zEiD91xpNQgSGusV1YZVz5SDw/formResponse';
+  const formData = new FormData();
+  formData.append('entry.1137609677', email);
+
+  fetch(gformUrl, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  });
+
+  // 前端回饋
   btn.textContent = '收到了！';
   btn.style.background = '#8FA878';
   input.value = '';
-  input.placeholder = '謝謝你願意等這本書';
+  input.placeholder = '謝謝你願意等這本書 ♡';
   input.disabled = true;
   btn.disabled = true;
-
-  const list = JSON.parse(localStorage.getItem('xiaowanlong_subs') || '[]');
-  list.push({ email, date: new Date().toISOString() });
-  localStorage.setItem('xiaowanlong_subs', JSON.stringify(list));
 
   setTimeout(() => { btn.textContent = '已訂閱'; }, 1500);
 }
