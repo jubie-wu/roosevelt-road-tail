@@ -857,10 +857,17 @@ body::after {
   font-family: var(--ff-sans);
   letter-spacing: 0;
 }
-.toc-tip em {
+.toc-tip i {
   font-style: normal;
-  color: var(--blush);
-  font-weight: 500;
+  margin-right: 2px;
+}
+.toc-tip .ti-done {
+  opacity: 1;
+}
+.toc-tip .ti-done + span { color: var(--leaf); }
+.toc-tip .ti-wait {
+  opacity: 0.4;
+  filter: grayscale(1);
 }
 .toc-tip::after {
   content: '';
