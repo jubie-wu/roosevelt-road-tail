@@ -47,14 +47,28 @@ document.addEventListener('DOMContentLoaded', () => {
     lastY = y;
   }, { passive: true });
 
-  // ===== 進度條動畫 =====
+  // ===== 進度條動畫 + 百分比計數 =====
   const bar = document.querySelector('.progress-bar-fill');
-  if (bar) {
-    const targetWidth = bar.dataset.width || '28';
+  const percentEl = document.querySelector('.progress-percent span');
+  if (bar && percentEl) {
+    const target = parseInt(bar.dataset.width) || 28;
     bar.style.width = '0%';
+    percentEl.textContent = '0';
+
     const barObs = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        setTimeout(() => { bar.style.width = targetWidth + '%'; }, 300);
+        setTimeout(() => {
+          bar.style.width = target + '%';
+          // 數字跳動動畫
+          let current = 0;
+          const duration = 1600;
+          const step = duration / target;
+          const counter = setInterval(() => {
+            current++;
+            percentEl.textContent = current;
+            if (current >= target) clearInterval(counter);
+          }, step);
+        }, 300);
         barObs.unobserve(bar);
       }
     }, { threshold: 0.3 });

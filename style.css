@@ -314,18 +314,34 @@ body::after {
   background: var(--cream);
 }
 .progress-visual { margin-top: 24px; }
+.progress-bar-wrap {
+  position: relative;
+  margin-bottom: 48px;
+}
 .progress-bar-track {
-  height: 4px;
+  height: 6px;
   background: var(--parchment);
-  border-radius: 2px;
-  margin-bottom: 40px;
+  border-radius: 3px;
   overflow: hidden;
 }
 .progress-bar-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--sage), var(--terracotta));
-  border-radius: 2px;
-  transition: width 1.5s ease;
+  border-radius: 3px;
+  transition: width 1.8s ease;
+}
+.progress-percent {
+  position: absolute;
+  right: 0;
+  top: -28px;
+  font-family: var(--ff-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--terracotta);
+  transition: opacity 0.5s;
+}
+.progress-percent span {
+  font-size: 1.4rem;
 }
 .progress-stages {
   display: flex;
