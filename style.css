@@ -834,6 +834,51 @@ body::after {
   color: rgba(251,246,239,0.85);
   font-size: 0.88rem;
 }
+.toc-item {
+  position: relative;
+  cursor: default;
+}
+.toc-tip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(46, 31, 20, 0.92);
+  color: var(--warm-white);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  z-index: 10;
+  font-family: var(--ff-sans);
+  letter-spacing: 0;
+}
+.toc-tip em {
+  font-style: normal;
+  color: var(--blush);
+  font-weight: 500;
+}
+.toc-tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(46, 31, 20, 0.92);
+}
+.toc-item:hover .toc-tip {
+  opacity: 1;
+}
+
+/* 手機改為點擊顯示 */
+@media (hover: none) {
+  .toc-item:active .toc-tip { opacity: 1; }
+}
 
 /* === NAV CTA === */
 .nav-cta {
