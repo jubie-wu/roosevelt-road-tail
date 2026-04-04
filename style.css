@@ -810,6 +810,24 @@ body::after {
   padding: 80px 0;
   background: var(--teal);
 }
+.toc-parts {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.toc-part-label {
+  font-family: var(--ff-serif);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+  padding-left: 2px;
+}
+.toc-part-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
 .toc-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1127,6 +1145,7 @@ body::after {
   .book-preview { position: static; transform: none; max-width: 500px; margin: 0 auto; }
   .peek-grid { grid-template-columns: repeat(2, 1fr); }
   .toc-grid { grid-template-columns: repeat(2, 1fr); }
+  .toc-part-items { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -1134,6 +1153,7 @@ body::after {
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .toc-grid { grid-template-columns: repeat(2, 1fr); }
+  .toc-part-items { grid-template-columns: repeat(2, 1fr); }
   .peek-grid { grid-template-columns: 1fr; }
   .actions-grid { grid-template-columns: 1fr; }
   .book-meta { grid-template-columns: 1fr; }
