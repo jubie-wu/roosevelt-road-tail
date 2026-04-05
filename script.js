@@ -155,6 +155,25 @@ document.addEventListener('DOMContentLoaded', () => {
     strip.innerHTML += clone;
   }
 
+  // ===== 手機版 TOC tooltip 點擊切換 =====
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    document.querySelectorAll('.toc-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        // 關閉其他已開的
+        document.querySelectorAll('.toc-item.show-tip').forEach(el => {
+          if (el !== item) el.classList.remove('show-tip');
+        });
+        item.classList.toggle('show-tip');
+      });
+    });
+    // 點擊外部關閉
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.toc-item')) {
+        document.querySelectorAll('.toc-item.show-tip').forEach(el => el.classList.remove('show-tip'));
+      }
+    });
+  }
+
   // ===== Smooth scroll for nav links =====
   document.querySelectorAll('.nav-links a, .hero-cta').forEach(a => {
     a.addEventListener('click', e => {
