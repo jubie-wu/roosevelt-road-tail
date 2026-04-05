@@ -155,19 +155,23 @@ document.addEventListener('DOMContentLoaded', () => {
     strip.innerHTML += clone;
   }
 
-  // ===== 手機版 TOC tooltip 點擊切換 =====
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  // ===== 手機版 TOC tooltip 單次觸碰顯示 =====
+  const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  if (isTouchDevice) {
     document.querySelectorAll('.toc-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        // 關閉其他已開的
-        document.querySelectorAll('.toc-item.show-tip').forEach(el => {
-          if (el !== item) el.classList.remove('show-tip');
-        });
-        item.classList.toggle('show-tip');
+      item.addEventListener('touchend', (e) => {
+        e.preventDefault(); // 防止觸發 hover 和 click 雙重事件
+        const wasOpen = item.classList.contains('show-tip');
+        // 先關閉所有
+        document.querySelectorAll('.toc-item.show-tip').forEach(el => el.classList.remove('show-tip'));
+        // 如果原本是關的，打開這個
+        if (!wasOpen) {
+          item.classList.add('show-tip');
+        }
       });
     });
-    // 點擊外部關閉
-    document.addEventListener('click', (e) => {
+    // 觸碰其他地方關閉
+    document.addEventListener('touchend', (e) => {
       if (!e.target.closest('.toc-item')) {
         document.querySelectorAll('.toc-item.show-tip').forEach(el => el.classList.remove('show-tip'));
       }

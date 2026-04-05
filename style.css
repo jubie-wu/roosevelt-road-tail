@@ -912,8 +912,9 @@ a { color: inherit; }
   opacity: 1;
 }
 
-/* 手機：tooltip 改為點擊顯示，避免卡頓 */
+/* 手機：tooltip 點擊顯示 */
 @media (hover: none) {
+  .toc-item:hover .toc-tip { opacity: 0; }
   .toc-item.show-tip .toc-tip { opacity: 1; }
 }
 @media (max-width: 640px) {
